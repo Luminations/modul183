@@ -1,4 +1,9 @@
 $.getScript('js/classes/Drawing.inc.js', function(){
+	
+	$("form").submit(function(e){
+		e.preventDefault();
+	});
+	
 	var element = document.getElementById('char');
 	Drawing.setCanvas(element);
 	
@@ -22,6 +27,12 @@ $.getScript('js/classes/Drawing.inc.js', function(){
 
 	window.addEventListener("mouseup", function(e){
 		Drawing.setIsDown(0);
+	});
+	
+	$("#submit").click(function(){
+		var x = Drawing.canvasToUrl();
+		console.log(x);
+		//AJAX REQUEST AN PHP FÜR DB SAVE
 	});
 	
 });

@@ -146,5 +146,10 @@ var Drawing = {
         };
         result = "rgba(" + rgba.r + "," + rgba.g + "," + rgba.b + "," + rgba.a + ")";
         return result;
-    }
+    },
+	
+	canvasToUrl: function(){
+		var imageUrl = this.canvasObject.toDataURL('image/png');
+		return imageUrl;
+	}
 }

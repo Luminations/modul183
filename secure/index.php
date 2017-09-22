@@ -48,7 +48,7 @@
 					</div>
 
 					<div class="control-group">
-						<button id="submit" onclick="sendEmote(event)" class="draw-icon pure-button"></button>
+						<button id="submit" class="draw-icon pure-button"></button>
 						<label for="submit"><span>Submit</span></label>
 					</div>
 
