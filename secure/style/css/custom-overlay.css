@@ -1,0 +1,139 @@
+/** Colors **/
+#eraser {
+  background-image: url("../../img/icons/eraser-midnight.png"); }
+  #eraser:hover {
+    background-image: url("../../img/icons/eraser-white.png"); }
+
+#clear {
+  background-image: url("../../img/icons/brush-midnight.png"); }
+  #clear:hover {
+    background-image: url("../../img/icons/brush-white.png"); }
+
+#paint {
+  background-image: url("../../img/icons/paint-brush-midnight.png"); }
+  #paint:hover {
+    background-image: url("../../img/icons/paint-brush-white.png"); }
+
+#submit {
+  background-image: url("../../img/icons/submit-midnight.png"); }
+  #submit:hover {
+    background-image: url("../../img/icons/submit-white.png"); }
+
+#back {
+  background-image: url("../../img/icons/return-midnight.png"); }
+  #back:hover {
+    background-image: url("../../img/icons/return-white.png"); }
+
+#overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  width: 60vw;
+  background-color: transparent; }
+  #overlay-wrapper .control-u {
+    max-height: 70px; }
+  #overlay-wrapper .canvas-u {
+    text-align: center;
+    height: calc(100vh - 70px); }
+    #overlay-wrapper .canvas-u .canvas-wrapper {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%); }
+
+.pure-form fieldset {
+  padding: 0; }
+
+#overlay-wrapper * {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */ }
+
+#draw-controls .control-group {
+  float: left;
+  max-width: 150px; }
+  #draw-controls .control-group #size {
+    height: 50px;
+    margin: 10px 5px; }
+  #draw-controls .control-group #color {
+    margin: 10px 5px;
+    height: 50px;
+    width: 50px; }
+  #draw-controls .control-group #opacity {
+    margin: 25px 5px;
+    width: 50px;
+    transform: rotate(270deg); }
+  #draw-controls .control-group .draw-icon {
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ecf0f1;
+    border: solid #ecf0f1 10px;
+    margin: 10px 5px; }
+    #draw-controls .control-group .draw-icon:hover {
+      background-color: #2c3e50;
+      border: solid #2c3e50 10px;
+      transition: background-image 0.2s, border 0.2s, background-color 0.2s; }
+  #draw-controls .control-group .active-button {
+    background-color: #34495e;
+    border: solid #34495e 10px;
+    transition: background-image 0.2s, border 0.2s, background-color 0.2s; }
+  #draw-controls .control-group label {
+    overflow: hidden;
+    position: absolute;
+    width: 50px;
+    height: 0;
+    text-align: center;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 0;
+    margin: 0 0 0 5px;
+    border-radius: 3px;
+    transition: all 0.3s;
+    display: block; }
+    #draw-controls .control-group label span {
+      margin: 0;
+      padding: 0;
+      transform: rotate(90deg);
+      line-height: 10vh;
+      display: inline-block; }
+
+#draw-controls .double-size {
+  max-width: 110px; }
+  #draw-controls .double-size label {
+    margin-left: 25px; }
+
+#draw-controls .control-group:hover label {
+  transition: all 0.3s;
+  height: 10vh; }
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60vw;
+  height: 100vh;
+  background-color: #2c3e50;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+  z-index: 10000; }
+
+#char:hover {
+  cursor: crosshair; }
+
+#char {
+  background-color: #ecf0f1;
+  margin: 15px; }

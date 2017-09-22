@@ -1,0 +1,35 @@
+#eraser{
+  background-image: url("../../img/icons/eraser-midnight.png");
+  &:hover{
+    background-image: url("../../img/icons/eraser-white.png");
+
+  }
+}
+
+#clear{
+  background-image: url("../../img/icons/brush-midnight.png");
+  &:hover{
+    background-image: url("../../img/icons/brush-white.png");
+  }
+}
+
+#paint{
+  background-image: url("../../img/icons/paint-brush-midnight.png");
+  &:hover{
+    background-image: url("../../img/icons/paint-brush-white.png");
+  }
+}
+
+#submit{
+  background-image: url("../../img/icons/submit-midnight.png");
+  &:hover{
+    background-image: url("../../img/icons/submit-white.png");
+  }
+}
+
+#back{
+  background-image: url("../../img/icons/return-midnight.png");
+  &:hover{
+    background-image: url("../../img/icons/return-white.png");
+  }
+}
