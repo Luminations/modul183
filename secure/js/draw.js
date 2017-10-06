@@ -30,18 +30,24 @@ $.getScript('js/classes/Drawing.inc.js', function(){
 	});
 	
 	$("#submit").click(function(){
-		var imgUrl = Drawing.canvasToUrl();
+		var imgUri = Drawing.canvasToUrl();
+		console.log(imgUri);
 		$.ajax({
 			url: "php/api.php",
 			method: "POST",
-			data: { user: "John", imgUrl: imgUrl },
+			data: { title: "Painting 1", imgUri: imgUri },
 			beforeSend: function( xhr ) {
 				console.log("sending..");
 			}
 		})
 		.done(function( data ) {
-			if ( console && console.log ) {
-				console.log( "Done! Sample of data:", data.slice( 0, 100 ) );
+			var win = window.open(imgUri, '_blank');
+			if (win) {
+				//Browser has allowed it to be opened
+				win.focus();
+			} else {
+				//Browser has blocked it
+				alert('Please allow popups for this website');
 			}
 		});
 	});
