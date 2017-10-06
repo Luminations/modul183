@@ -30,9 +30,20 @@ $.getScript('js/classes/Drawing.inc.js', function(){
 	});
 	
 	$("#submit").click(function(){
-		var x = Drawing.canvasToUrl();
-		console.log(x);
-		//AJAX REQUEST AN PHP FÜR DB SAVE
+		var imgUrl = Drawing.canvasToUrl();
+		$.ajax({
+			url: "php/api.php",
+			method: "POST",
+			data: { user: "John", imgUrl: imgUrl },
+			beforeSend: function( xhr ) {
+				console.log("sending..");
+			}
+		})
+		.done(function( data ) {
+			if ( console && console.log ) {
+				console.log( "Done! Sample of data:", data.slice( 0, 100 ) );
+			}
+		});
 	});
 	
 });
