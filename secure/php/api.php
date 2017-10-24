@@ -1,6 +1,8 @@
 <?php
 include("sql.php");
-$api = new Api($_POST["title"], $_POST["imgUri"]);
+if(isset($_POST["title"]) && isset($_POST["imgUri"])){
+    $api = new Api($_POST["title"], $_POST["imgUri"]);
+}
 
 Class Api {
 	private $imgUri;
@@ -9,7 +11,8 @@ Class Api {
 	function __construct($title, $imgUri){
 		$this->title = $title;
 		$this->imgUri = $imgUri;
-		$this->prepareInsertImage();
+		$answer = $this->prepareInsertImage();
+		var_dump($answer);
 	}
 	
 	private function validateParam(){
@@ -29,14 +32,18 @@ Class Api {
 	}
 	
 	private function prepareInsertImage(){
-		$MySql = new Sql("localhost", "root", "", "modul183");
+		$MySql = new Sql();
 		if($this->validateParam()){
 			if($MySql->uriIsUnique($this->imgUri)){
-				$MySql->insertImage($this->title, $this->imgUri);
+                $MySql->insertImage($this->title, $this->imgUri);
+                $result = [true, "Image was saved."];
 			} else {
-				return;
+				$result = [false, "This image already exists."];
 			}
-		}
+		} else {
+		    $result = [false, "There was an error while saving your file, please retry."];
+        }
+		return $result;
 	}
 }
 

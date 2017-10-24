@@ -1,12 +1,10 @@
 <?php
 include("sql.php");
-if(isset($_POST["username"]) && isset($_POST["password"])){
-    $api = new Api($_POST["title"], $_POST["imgUri"]);
-}
+$api = new Api($_POST["title"], $_POST["imgUri"]);
 
 Class Api {
-    private $imgUri;
-    private $title;
+    private $username;
+    private $password;
 
     function __construct($title, $imgUri){
         $this->title = $title;

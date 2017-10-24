@@ -31,13 +31,12 @@ $.getScript('js/classes/Drawing.inc.js', function(){
 	
 	$("#submit").click(function(){
 		var imgUri = Drawing.canvasToUrl();
-		console.log(imgUri);
 		$.ajax({
 			url: "php/api.php",
 			method: "POST",
 			data: { title: "Painting 1", imgUri: imgUri },
 			beforeSend: function( xhr ) {
-				console.log("sending..");
+                Drawing.clearCanvas();
 			}
 		})
 		.done(function( data ) {
