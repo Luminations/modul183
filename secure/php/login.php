@@ -15,7 +15,14 @@ Class Login {
     $escaped = $MySql->escapeString($toBeEscaped);
     $this->mail = $escaped[0];
     $this->password = $this->secureHash($escaped[1]);
-    var_dump($MySql->lookForUser($this->mail, $this->password));
+	$queryResult = $MySql->lookForUser($this->mail, $this->password);
+	if($queryResult !== false){
+		$MySql->setSession('uid', $queryResult);
+		$returnValue = 1;
+	} else {
+		$returnValue = 0;
+	}
+    print $returnValue;
   }
 
   function secureHash($password){

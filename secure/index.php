@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['uid']) || !is_int($_SESSION['uid']) ){
+	header("Location: login.html");
+}
+?>
 <!doctype html>
 <html>
   <head>
@@ -7,7 +13,7 @@
   </head>
   <body>
 	<div class="pure-g" id="overlay-wrapper">
-		<div class="pure-u-1-1 control-u">
+		<div class="pure-u-1-1 control-u" id="header-nav">
 			<form class="pure-form" id="draw-controls">
 
 				<fieldset>
@@ -55,10 +61,14 @@
 				</fieldset>
 			</form>
 		</div>
-		<div class="pure-u-1-1 canvas-u">
+		<div class="pure-u-2-3 canvas-u">
 			<div class="canvas-wrapper">
 				<canvas name="canvas" id="char" class="char" height="300px" width="300px" onclick="Drawing.draw()"></canvas>
 			</div>
+		</div>
+		<div class="pure-u-1-3 sidebar-u">
+			<button id="logout" class="pure-button">Logout</button>
+			<button id="gallery" class="pure-button">Gallery</button>
 		</div>
 	</div>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>

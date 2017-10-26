@@ -1,5 +1,9 @@
 @import "_colors.scss";
 @import "_drawing-icons.scss";
+
+body{
+	background-color: $asphalt;
+}
 #overlay-wrapper{
   .control-u{
     max-height: 70px;
@@ -21,10 +25,6 @@
   background-color: transparent;
 }
 
-.pure-form fieldset{
-  padding: 0;
-}
-
 #overlay-wrapper *{
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -35,6 +35,12 @@
 }
 
 #draw-controls{
+  text-align: center;
+  width: calc(100vw / 3 * 2);
+  fieldset{
+	display: inline;
+    padding: 0;
+  }
   .control-group{
     float: left;
     max-width: 150px;
@@ -129,6 +135,14 @@
 }
 
 #char{
-  background-color: $clouds;
-  margin: 15px
-;}
+  background-color: #FFFFFF;
+  margin: 15px;
+}
+
+#header-nav{
+	background-color: $midnight;
+}
+
+.sidebar-u{
+	background-color: white;
+}

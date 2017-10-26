@@ -39,13 +39,17 @@ Class Sql{
   public function lookForUser($mail, $password){
     $user = $this->connection->query("SELECT uid FROM user WHERE mail='" . $mail ."' AND password='" . $password . "';");
     if($user->num_rows > 0){
-      $user = $this->resultToArray($user);
+      $user = intval($this->resultToArray($user)[0]['uid']);
       return $user;
     }
-    return "failure";
+    return false;
   }
 
-
+    //Here all the sessions get set. (YET)
+    public function setSession($session, $value){
+		session_start();
+        $_SESSION[$session] = $value;
+    }
 
   public function resultToArray($result){
     $rows = array();
@@ -184,10 +188,6 @@ Class Sql{
     }
 
 
-    //Here all the sessions get set. (YET)
-    private function setSession($session, $value){
-        $_SESSION[$session] = $value;
-    }
 
     //Function that checks the connection to the database. If there where no Issues found it returns true.
     //Error messages get thrown into $_SESSION["ERROR"]
