@@ -2,7 +2,7 @@
 @import "_drawing-icons.scss";
 
 body{
-	background-color: $asphalt;
+	background-color: $ayy;
 }
 #overlay-wrapper{
   .control-u{
@@ -35,6 +35,7 @@ body{
 }
 
 #draw-controls{
+  float: left;
   text-align: center;
   width: calc(100vw / 3 * 2);
   fieldset{
@@ -140,9 +141,53 @@ body{
 }
 
 #header-nav{
-	background-color: $midnight;
+  background-color: $asphalt;
 }
 
 .sidebar-u{
-	background-color: white;
+  background-color: white;
+  position: relative;
+}
+
+#gallery{
+  top: 0;
+}
+
+#logout{
+  bottom: 0;
+}
+
+.side-buttons{
+  display: block;
+  height: 50%;
+  position: absolute;
+  width: 100%;
+  transition: all 0.3s;
+  border: $midnight 5px solid;
+  border-radius: 0;
+  background-color: white;
+  color: $midnight;
+}
+
+.side-buttons:hover{
+  background-color: $asphalt;
+  transition: all 0.3s;
+  border: white 5px solid;
+  color: white;
+}
+
+#title-form{
+    display: inline-block;
+    width: calc(100vw / 3);
+    height: 100%;
+    position: relative;
+}
+
+#image-title{
+    height: 50%;
+    width: 90%;
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 5%;
 }

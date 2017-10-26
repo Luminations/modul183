@@ -31,24 +31,24 @@ $.getScript('js/classes/Drawing.inc.js', function(){
 	
 	$("#submit").click(function(){
 		var imgUri = Drawing.canvasToUrl();
+		var title = $("#image-title").val();
+		if (!title.trim()) {
+			// is empty or whitespace
+			title = "Untitled";
+		}
 		$.ajax({
 			url: "php/api.php",
 			method: "POST",
-			data: { title: "Painting 1", imgUri: imgUri },
-			beforeSend: function( xhr ) {
-                Drawing.clearCanvas();
-			}
+			data: { title: title, imgUri: imgUri }
 		})
-		.done(function( data ) {
-			var win = window.open(imgUri, '_blank');
-			if (win) {
-				//Browser has allowed it to be opened
-				win.focus();
-			} else {
-				//Browser has blocked it
-				alert('Please allow popups for this website');
-			}
+		.done(function( data ) {			
+			alert(data);
 		});
+	});
+	
+	$('#logout').click(function(e){
+		e.preventDefault();
+		var win = window.open('php/logout.php', '_self');
 	});
 	
 });

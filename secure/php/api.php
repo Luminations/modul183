@@ -12,7 +12,7 @@ Class Api {
 		$this->title = $title;
 		$this->imgUri = $imgUri;
 		$answer = $this->prepareInsertImage();
-		var_dump($answer);
+		print $answer;
 	}
 	
 	private function validateParam(){
@@ -32,13 +32,14 @@ Class Api {
 	}
 	
 	private function prepareInsertImage(){
+		session_start();
 		$MySql = new Sql();
 		if($this->validateParam()){
 			if($MySql->uriIsUnique($this->imgUri)){
                 $MySql->insertImage($this->title, $this->imgUri);
-                $result = [true, "Image was saved."];
+                $result = "Image was saved.";
 			} else {
-				$result = [false, "This image already exists."];
+				$result = "This image already exists.";
 			}
 		} else {
 		    $result = [false, "There was an error while saving your file, please retry."];

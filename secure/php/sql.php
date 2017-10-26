@@ -1,5 +1,4 @@
 <?php
-$MySql = new Sql();
 Class Sql{
   private $servername = "localhost";
   private $username = "root";
@@ -17,13 +16,13 @@ Class Sql{
 
   public function insertImage($title, $uri){
     $values = $this->escapeString([$title, $uri]);
-    $this->connection->query('INSERT INTO ' . $this->imageTable . '(title, imageuri, fk_uid) VALUES("' . $values[0] . '", "' . $values[1] . '", ' . 1 . ');');
+    $this->connection->query('INSERT INTO ' . $this->imageTable . '(title, imageuri, fk_uid) VALUES("' . $values[0] . '", "' . $values[1] . '", ' . $_SESSION['uid'] . ');');
   }
 
   public function uriIsUnique($uri){
     $escapedValue = $this->escapeString([$uri]);
     $dbValues = [];
-    $result = $this->connection->query('SELECT imageuri FROM ' . $this->imageTable . ' WHERE fk_uid=' . 1 . ';');
+    $result = $this->connection->query('SELECT imageuri FROM ' . $this->imageTable . ' WHERE fk_uid=' . $_SESSION['uid'] . ';');
     $isUnique = true;
     if($result->num_rows > 0){
       $dbValues = $this->resultToArray($result);
@@ -37,12 +36,13 @@ Class Sql{
   }
 
   public function lookForUser($mail, $password){
+	$return = false;
     $user = $this->connection->query("SELECT uid FROM user WHERE mail='" . $mail ."' AND password='" . $password . "';");
     if($user->num_rows > 0){
       $user = intval($this->resultToArray($user)[0]['uid']);
-      return $user;
+      $return = $user;
     }
-    return false;
+    return $return;
   }
 
     //Here all the sessions get set. (YET)
@@ -68,10 +68,18 @@ Class Sql{
     //Hand escaped input back to the function
     return $toBeEscaped;
   }
-
-  //redirect function
-  public function redirectUser($url){
-    header("Location: " . $url);
+  
+  //Display all images saved alongside your uid
+  public function displayImages(){
+    $result = $this->connection->query('SELECT imgid, title, imageuri FROM ' . $this->imageTable . ' WHERE fk_uid=' . $_SESSION['uid'] . ';');
+    $dbValues = $this->resultToArray($result);
+	return $dbValues;
+  }
+  
+  //Delete an image
+  public function deleteImage($imgid){
+    $result = $this->connection->query('DELETE FROM ' . $this->imageTable . ' WHERE fk_uid=' . $_SESSION['uid'] . ' AND imgid=' . $imgid . ';');
+	return $result;
   }
 
   //close connection

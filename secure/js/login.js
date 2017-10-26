@@ -12,6 +12,7 @@ function handleLogin(){
         data: { mail: mail, password: password }
     })
         .done(function( loginSuccessful ) {
+			console.log(loginSuccessful);
 			loginSuccessful = parseInt(loginSuccessful);
 			if(loginSuccessful === 1){
             var win = window.open('index.php', '_self');

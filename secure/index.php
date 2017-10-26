@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION['uid']) || !is_int($_SESSION['uid']) ){
 	header("Location: login.html");
 }
+
 ?>
 <!doctype html>
 <html>
@@ -60,6 +61,9 @@ if(!isset($_SESSION['uid']) || !is_int($_SESSION['uid']) ){
 
 				</fieldset>
 			</form>
+			<form class="pure-form" id="title-form">
+				<input id="image-title" type="text" placeholder="Title">
+			</form>
 		</div>
 		<div class="pure-u-2-3 canvas-u">
 			<div class="canvas-wrapper">
@@ -67,8 +71,8 @@ if(!isset($_SESSION['uid']) || !is_int($_SESSION['uid']) ){
 			</div>
 		</div>
 		<div class="pure-u-1-3 sidebar-u">
-			<button id="logout" class="pure-button">Logout</button>
-			<button id="gallery" class="pure-button">Gallery</button>
+			<a href="images.php"><button id="gallery" class="pure-button side-buttons"><h2>Gallery</h2></button></a>
+			<button id="logout" class="pure-button side-buttons"><h2>Logout</h2></button>
 		</div>
 	</div>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
